@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('acceuil');
+});
+Route::get('/acceuil', function () {
+    return view('acceuil');
 })->name('acceuil');
 Route::get('/creationCompte', function () {
     return view('creationCompte');
@@ -26,9 +29,9 @@ Route::get('/creationMessage', function () {
 Route::get('/creationTicket', function () {
     return view('creationTicket');
 })->Name('creationTicket');
-// Route::post('/logUser', function () {
-//     return view('logUser');
-// })->Name('logUser');
+Route::get('/logUser', function () {
+    return view('logUser');
+})->Name('logUser');
 Route::get('/mdpoubli', function () {
     return view('mdpoubli');
 })->Name('mdpoubli');
