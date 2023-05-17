@@ -1,7 +1,7 @@
 @extends('template.pageCommune')
 @section('content')
     <div id="containerCreat">
-        <form id="creationCompte" action="" method="POST"><label for="Login">Login* <span id="condition">(12
+        <form id="creationCompte" action="acceuil" method="get"><label for="Login">Login* <span id="condition">(12
                     caractère
                     max)</span> :</label>
             <input type="text" id="Login" name="login" maxlength="12" required />

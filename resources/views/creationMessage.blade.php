@@ -1,6 +1,6 @@
 @extends('template.pageCommune')
 @section('content')
-    <form id="creationMessage" action="messageUser.php" method="post">
+    <form id="creationMessage" action="messageUser" method="get">
         <fieldset>
             <legend>Entrez votre message</legend>
             <textarea name="message" id="message" cols="30" rows="10"></textarea>
