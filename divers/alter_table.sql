@@ -1,0 +1,20 @@
+ALTER TABLE Message
+ADD FOREIGN KEY (User_id) REFERENCES User(Id);
+
+ALTER TABLE TicketMessage
+ADD FOREIGN KEY (IdMessage) REFERENCES Message(Id),
+ADD FOREIGN KEY (IdTicket) REFERENCES Ticket(Id);
+
+ALTER TABLE Ticket
+ADD FOREIGN KEY (User_id) REFERENCES User(Id),
+ADD FOREIGN KEY (Type_panne_id) REFERENCES TypePanne(Id),
+ADD FOREIGN KEY (Status_id) REFERENCES Status(Id);
+
+
+ALTER TABLE UserRole
+ADD FOREIGN KEY (IdUser) REFERENCES User(Id),
+ADD FOREIGN KEY (IdRole) REFERENCES Role(Id);
+
+
+
+
