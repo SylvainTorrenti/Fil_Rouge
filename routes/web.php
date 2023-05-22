@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
@@ -17,27 +19,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('acceuil');
 });
+
 Route::get('/acceuil', function () {
     return view('acceuil');
 })->name('acceuil');
-Route::get('/creationCompte', function () {
-    return view('creationCompte');
-})->Name('creationCompte');
-Route::get('/creationMessage', function () {
-    return view('creationMessage');
-})->Name('creationMessage');
-Route::get('/creationTicket', function () {
-    return view('creationTicket');
-})->Name('creationTicket');
-Route::get('/logUser', function () {
-    return view('logUser');
-})->Name('logUser');
-Route::get('/mdpoubli', function () {
-    return view('mdpoubli');
-})->Name('mdpoubli');
-Route::get('/messageUser', function () {
-    return view('messageUser');
-})->Name('messageUser');
-Route::get('/statutTicket', function () {
-    return view('statutTicket');
-})->Name('statutTicket');
+
+Route::get('/creationCompte', [UserController::class, 'createAccount'])->Name('creationCompte');
+Route::post('/creationCompte', [UserController::class, 'storeAccount'])->Name('storeAccount');
+
+Route::get('/creationMessage', [TicketController::class, 'createMessage'])->Name('creationMessage');
+Route::post('/creationMessage', [TicketController::class, 'storeMessage'])->Name('storeMessage');
+
+Route::get('/creationTicket', [TicketController::class, 'createTicket'])->Name('creationTicket');
+Route::post('/creationTicket', [TicketController::class, 'storeTicket'])->Name('storeTicket');
+
+Route::get('/logUser', [UserController::class, 'aChanger'])->Name('logUser');
+
+
+Route::get('/mdpoubli', [UserController::class, 'password'])->Name('mdpoubli');
+Route::post('/mdpoubli', [UserController::class, 'passwordForgot'])->Name('mdpOubliForm');
+
+Route::get('/statutTicket', [TicketController::class, 'displayTicket'])->Name('statutTicket');
+
+// exemple cour
+Route::get('/users', [UserController::class, 'create'])->name("users.create");
+Route::post('/users', [UserController::class, 'store'])->name("users.store");

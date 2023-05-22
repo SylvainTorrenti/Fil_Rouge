@@ -11,6 +11,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: 175px;
 }
 
 header #logo {
@@ -26,6 +27,8 @@ header #logo {
 body {
     background-color: #BE5B31;
     height: 100%;
+    display: grid;
+    grid-template-rows: auto auto auto;
 }
 
 #Titre_Acceuil {
@@ -44,8 +47,10 @@ body {
 }
 
 #creationMessage {
-    width: 1000px;
-    padding: 150px;
+    width: 700px;
+    height: 190px;
+    padding: 100px;
+    margin-bottom: 70px;
     padding-left: 500px;
     max-width: 200px;
 
@@ -64,6 +69,7 @@ textarea {
 
 #container {
     width: 300px;
+    height: 350px;
     margin: 0 auto;
     margin-top: 1%;
     margin-bottom: 1%;
@@ -102,8 +108,6 @@ input[type=tel] {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     height: 50px;
     display: flex;
@@ -127,4 +131,28 @@ li+li {
 
 a {
     text-decoration: none;
+}
+
+#statut {
+    padding: 30px;
+
+}
+
+table {
+    table-layout: fixed;
+    border: solid 2px;
+    border-collapse: collapse;
+    width: 90vw;
+
+}
+
+thead {
+    font-size: xx-large;
+}
+
+th,
+td {
+    border: solid 2px;
+    height: fit-content;
+    overflow-wrap: break-word;
 }

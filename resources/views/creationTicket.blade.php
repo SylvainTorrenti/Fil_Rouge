@@ -1,11 +1,18 @@
 @extends('template.pageCommune')
 @section('content')
     <div id="containerCreat">
-        <form id="creationTicket" action="" method="POST">
+        <form id="creationTicket" action="{{ route('storeTicket') }}" method="POST">
+            @csrf
             <label for="materiel">Quel est le materiel avec un probléme? :</label>
-            <input type="text" id="Materiel" name="materiel" required />
+            <input type="text" id="materiel" name="materiel" required />
+            @error('materiel')
+                {{ $message }}
+            @enderror
             <label for="description">Veuillez expliquez votre probléme :</label>
             <textarea id="description" name="description" required></textarea><br>
+            @error('description')
+                {{ $message }}
+            @enderror
             <button type="submit">
                 Envoyer
             </button>

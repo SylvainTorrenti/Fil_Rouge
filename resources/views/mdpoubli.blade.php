@@ -1,9 +1,13 @@
 @extends('template.pageCommune')
 @section('content')
     <div id="container">
-        <form id="email" action="" method="POST">Veuillez indiquer votre email : <label for="Login">
-                :</label>
+        <form id="email" action="{{ route('mdpOubliForm') }}" method="POST">
+            @csrf
+            <label for="Login">Veuillez indiquer votre email :</label>
             <input type="email" id="email" name="email" required />
+            @error('email')
+                {{ $message }}
+            @enderror
             <button type="submit">Valider</button>
     </div>
     </form>

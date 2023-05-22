@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../css/style.css">
     @vite(['resources/css/app.css'])
 </head>
-@include('template.composants.header')
 
 <body>
+    @include('template.composants.header')
     @yield('content')
+    @include('template.composants.footer')
 </body>
-@include('template.composants.footer')
 
 </html>
