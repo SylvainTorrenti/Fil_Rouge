@@ -14,4 +14,8 @@ class DeptModel extends Model
     {
         return DB::select("select * from DEPT");
     }
+    public function get($n)
+    {
+        return DB::selectOne('select * from DEPT where DEPTNO = ?;', [$n]);
+    }
 }
