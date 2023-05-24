@@ -25,25 +25,36 @@ Route::get('/acceuil', function () {
     return view('acceuil');
 })->name('acceuil');
 
+
+Route::get('/logUser', [TicketController::class, 'displayTickets'])->Name('logUser');
+Route::post('/logUser', [TicketController::class, 'createTicketPost'])->Name('logUserPost');
+
+
+Route::get('/statutTicket/{n}', [TicketController::class, 'displayOneTicket'])->Name('statutTicket');
+
+Route::get('/creationTicket', [TicketController::class, 'createTicket'])->Name('creationTicket');
+
+Route::get('/creationMessage/{n}', [TicketController::class, 'createMessage'])->Name('creationMessage');
+
+//a revoir
+
+
 Route::get('/creationCompte', [UserController::class, 'createAccount'])->Name('creationCompte');
 Route::post('/creationCompte', [UserController::class, 'storeAccount'])->Name('storeAccount');
 
-Route::get('/creationMessage', [TicketController::class, 'createMessage'])->Name('creationMessage');
 Route::post('/creationMessage', [TicketController::class, 'storeMessage'])->Name('storeMessage');
 
-Route::get('/creationTicket', [TicketController::class, 'createTicket'])->Name('creationTicket');
 Route::post('/creationTicket', [TicketController::class, 'storeTicket'])->Name('storeTicket');
 
-Route::get('/logUser', [UserController::class, 'aChanger'])->Name('logUser');
 
 
 Route::get('/mdpoubli', [UserController::class, 'password'])->Name('mdpoubli');
 Route::post('/mdpoubli', [UserController::class, 'passwordForgot'])->Name('mdpOubliForm');
 
-Route::get('/statutTicket', [TicketController::class, 'displayTicket'])->Name('statutTicket');
 
 // exemple cour
 Route::get('/users', [UserController::class, 'create'])->name("users.create");
 Route::post('/users', [UserController::class, 'store'])->name("users.store");
 
-Route::get('/dept', [DeptController::class, 'AfficherDepartements']);
+Route::get('/dept', [DeptController::class, 'AfficherDepartements'])->name('dept.list');
+Route::get('/dept/{n}', [DeptController::class, 'AfficherDepartement'])->name('deptdetail');

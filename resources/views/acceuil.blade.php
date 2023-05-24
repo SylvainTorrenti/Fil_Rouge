@@ -27,10 +27,4 @@
             <p><a id="creation" href="creationCompte">Creation de compte</a></p>
     </div>
     </form>
-    <a href="creationTicket">/creationTicket</a>
-    <a href="creationCompte">/creationCompte</a>
-    <a href="logUser">/logUser</a>
-    <a href="statutTicket">/statutTicket</a>
-    <a href="creationMessage">/creationMessage</a>
-    <p><a href="mdpoubli">/mdpoubli</a></p>
 @endsection

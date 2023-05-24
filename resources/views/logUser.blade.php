@@ -2,28 +2,34 @@
 @section('content')
     <div>
         <h2>Vos tickets :</h2>
-        <p>
         <ul id="ulTicket">
-            <li>
-                <span id="titreTicket">Ticket 1 :</span>
-            </li>
-            <ul id="ulTicket">
-                <li>
-                    <strong>Numero : </strong>2458ah47
-                </li>
-                <li>
-                    <strong>Date : </strong>11/03/23
-                </li>
-                <li><strong>Materiel : </strong>{{ Request::get('materiel') }}</li>
-                <li><strong>Description : </strong>{{ Request::get('description') }}</li>
-                <li>
-                    <strong>Intervenant : </strong>Sylvain
-                </li>
-                <li><a href="creationMessage"><button>Nouveau message</button></a></li>
-                <li><a href="statutTicket"><button>Info</button></a></li>
-            </ul>
+            @forelse ($tickets as $ticket)
+                <ul>
+                    <li>
+                        <span id="titreTicket">Ticket {{ $ticket->Id }} : </span>
+                    </li>
+                    <ul>
+                        <li><strong>Sujet : </strong>{{ $ticket->Sujet }} </li>
+                        <li><strong>Panne : </strong>{{ $ticket->IdTypePanne }}</li>
+                        {{-- Relier idTypePanne avec le nom de la panne --}}
+                        <li><strong>Auteur : </strong>{{ $ticket->IdAuteur }}</li>
+                        {{-- relier id auteur au nom --}}
+                        <li><strong>Date de creations : </strong>{{ $ticket->CreatedAt }}</li>
+                        <li><strong>Date de mise a jour : </strong>{{ $ticket->UpdatedAt }}</li>
+                        <li><strong>Status : </strong>{{ $ticket->IdStatus }}</li>
+                        {{-- relier status id avec le bon label --}}
+                        <li><button><a href="{{ route('statutTicket', ['n' => $ticket->Id]) }}">Info</a></button></li>
+                        <li><button><a href="{{ route('creationMessage', ['n' => $ticket->Id]) }}">Message</a></button></li>
+                        <li></li>
+                    </ul>
+
+                </ul>
+            @empty
+            @endforelse
         </ul>
-        </p>
+
+
     </div>
-    <div><button><a href="creationTicket">créer un ticket</a></button></div>
+    <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>
+    <p><a href="{{ route('acceuil') }}">Retour a enlever</a></p>
 @endsection

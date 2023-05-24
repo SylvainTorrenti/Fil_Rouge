@@ -1,7 +1,7 @@
 @extends('template.pageCommune')
 @section('content')
     <div id="containerCreat">
-        <form id="creationTicket" action="{{ route('storeTicket') }}" method="POST">
+        <form id="creationTicket" action="{{ route('logUserPost') }}" method="POST">
             @csrf
             <label for="materiel">Quel est le materiel avec un probléme? :</label>
             <input type="text" id="materiel" name="materiel" required />
@@ -22,5 +22,5 @@
             <p>Tout les champs sont obligatoire</p>
     </div>
     </form>
-    <p><a href="acceuil">Retour a enlever</a></p>
+    <p><a href="{{ route('acceuil') }}">Retour a enlever</a></p>
 @endsection
