@@ -17,22 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/auth', function () {
-    return view('welcome');
+    return view('cour/welcome');
 });
 
+
+Route::get('home', function () {
+    return view('home');
+})->middleware('auth');
 
 //route du projet
 Route::get('/', function () {
-    return view('acceuil');
+    return view('fil_rouge/auth/login');
 });
 
 Route::get('/acceuil', function () {
-    return view('acceuil');
+    return view('fil_rouge/auth/login');
 })->name('acceuil');
 
 
-Route::get('/logUser', [TicketController::class, 'displayTickets'])->Name('logUser');
-Route::post('/logUser', [TicketController::class, 'createTicketPost'])->Name('logUserPost');
+Route::get('fil_rouge/logUser', [TicketController::class, 'displayTickets'])->Name('logUser');
+Route::post('fil_rouge/logUser', [TicketController::class, 'createTicketPost'])->Name('logUserPost');
 
 
 Route::get('/statutTicket/{n}', [TicketController::class, 'displayOneTicket'])->Name('statutTicket');

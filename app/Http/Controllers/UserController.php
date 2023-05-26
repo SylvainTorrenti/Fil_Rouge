@@ -34,7 +34,7 @@ class UserController extends Controller
     }
     public function createAccount()
     {
-        return view('creationCompte');
+        return view('fil_rouge/auth/register');
     }
     public function storeAccount(Request $request)
     {

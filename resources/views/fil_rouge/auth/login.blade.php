@@ -2,17 +2,19 @@
 @section('content')
     <h2 id="Titre_Acceuil">Bienvenue sur notre plateforme de maintenance informatique de 2ISA.</h2>
     <div id="container">
-        <form id="login" action="logUser" method="get">
+        <form id="login" action="{{ route('login') }}" method="POST">
             @csrf
-            <label for="Login">Login* <span id="condition">(12
-                    caractère
-                    max)</span> :</label>
-            <input type="text" id="Login" name="login" maxlength="12" required />
-            @error('login')
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" value="{{ old('email') }}" required autofocus />
+            </div>
+            @error('email')
                 {{ $message }}
             @enderror
-            <label for="password">Mot de passe* <span id="condition">(10 caractère max)</span> :</label>
-            <input type="password" id="password" name="pwd" maxlength="10" required />
+            <div>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" required />
+            </div>
             @error('password')
                 {{ $message }}
             @enderror
@@ -23,8 +25,8 @@
                 Effacer
             </button>
             <p><a href="mdpoubli">Mot de pass/login oublié?</a></p>
-            <p>Les champs avec * sont obligatoire</p>
             <p><a id="creation" href="creationCompte">Creation de compte</a></p>
     </div>
     </form>
+    <a href="{{ route('logUser') }}">A enlever</a>
 @endsection

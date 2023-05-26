@@ -15,7 +15,7 @@ class TicketController extends Controller
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getAll();
         // dd($tickets);
-        return view('logUser', ['tickets' => $tickets]);
+        return view('fil_rouge/logUser', ['tickets' => $tickets]);
     }
     public function displayOneTicket($n)
     {
