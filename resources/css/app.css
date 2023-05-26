@@ -118,6 +118,7 @@ footer {
 
 #ulTicket li {
     display: inline;
+    margin-left: 25px;
 }
 
 #titreTicket {
@@ -125,8 +126,8 @@ footer {
     font-weight: bold;
 }
 
-li+li {
-    margin-left: 25px;
+ul li {
+    list-style: none;
 }
 
 a {

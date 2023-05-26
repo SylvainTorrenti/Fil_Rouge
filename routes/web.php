@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/auth', function () {
+    return view('welcome');
+});
 
+
+//route du projet
 Route::get('/', function () {
     return view('acceuil');
 });
@@ -35,6 +40,7 @@ Route::get('/statutTicket/{n}', [TicketController::class, 'displayOneTicket'])->
 Route::get('/creationTicket', [TicketController::class, 'createTicket'])->Name('creationTicket');
 
 Route::get('/creationMessage/{n}', [TicketController::class, 'createMessage'])->Name('creationMessage');
+
 
 //a revoir
 

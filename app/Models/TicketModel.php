@@ -22,16 +22,7 @@ class TicketModel extends Model
     public function insert($data)
     {
 
-        return DB::table('Ticket')->insertGetId(['Sujet' => $data['description']]);
+        return DB::table('Ticket')->insertGetId(['Sujet' => $data['Sujet']]);
 
     }
-    // public function displayMessageTicket()
-    // {
-    //     $results = DB::select('SELECT Content
-    //     from Message m
-    //     INNER join TicketMessage tm on tm.IdMessage = m.Id
-    //     inner join Ticket t  on t.Id = tm.IdTicket
-    //     where tm.IdTicket  = :t.Id ', ['t.id' => 't.id']);
-    //     return $results;
-    // }
 }

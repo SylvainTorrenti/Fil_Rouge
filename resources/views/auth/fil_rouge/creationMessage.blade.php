@@ -4,10 +4,10 @@
         @csrf
         <fieldset>
             <legend>Entrez votre message</legend>
-            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <textarea name="Content" id="Content" cols="30" rows="10"></textarea>
         </fieldset>
         <button type="submit">Envoyer</button>
-        @error('message')
+        @error('Content')
             {{ $message }}
         @enderror
         <p><a href="acceuil">Retour a enlever</a></p>

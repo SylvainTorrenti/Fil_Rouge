@@ -8,9 +8,9 @@
             @error('materiel')
                 {{ $message }}
             @enderror
-            <label for="description">Veuillez expliquez votre probléme :</label>
-            <textarea id="description" name="description" required></textarea><br>
-            @error('description')
+            <label for="Sujet">Veuillez expliquez votre probléme :</label>
+            <textarea id="Sujet" name="Sujet" required></textarea><br>
+            @error('Sujet')
                 {{ $message }}
             @enderror
             <button type="submit">
