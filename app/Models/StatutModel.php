@@ -19,8 +19,9 @@ class StatutModel extends Model
     }
     public function changeStatut($n)
     {
-        DB::table('Ticket')
-            ->where('Status_id', 0)
-            ->update(['Status_id' => 1]);
+        $results = DB::table('Ticket')
+            ->where('Id', $n)
+            ->update(['Status_id' => 2]);
+        return $results;
     }
 }

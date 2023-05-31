@@ -35,15 +35,17 @@ Route::get('/acceuil', function () {
 })->name('acceuil');
 
 
-Route::get('fil_rouge/logUser', [TicketController::class, 'displayTickets'])->Name('logUser');
-Route::post('fil_rouge/logUser', [TicketController::class, 'createTicketPost'])->Name('logUserPost');
+Route::get('fil_rouge/logUser', [TicketController::class, 'displayTickets'])->middleware('auth')->Name('logUser');
+Route::post('fil_rouge/logUser', [TicketController::class, 'createTicketPost'])->middleware('auth')->Name('logUserPost');
 
 
-Route::get('/statutTicket/{n}', [TicketController::class, 'displayOneTicket'])->Name('statutTicket');
+Route::get('/statutTicket/{n}', [TicketController::class, 'displayOneTicket'])->middleware('auth')->Name('statutTicket');
 
-Route::get('/creationTicket', [TicketController::class, 'createTicket'])->Name('creationTicket');
+Route::post('/statutTicket/{n}/statut', [TicketController::class, 'ChangeStatut'])->middleware('auth')->Name('changeStatut');
 
-Route::get('/creationMessage/{n}', [TicketController::class, 'createMessage'])->Name('creationMessage');
+Route::get('/creationTicket', [TicketController::class, 'createTicket'])->middleware('auth')->Name('creationTicket');
+
+Route::get('/creationMessage/{n}', [TicketController::class, 'createMessage'])->middleware('auth')->Name('creationMessage');
 
 
 //a revoir

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MessageModel;
 use App\Models\StatutModel;
 use App\Models\TicketModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -14,7 +15,6 @@ class TicketController extends Controller
     {
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getAll();
-        // dd($tickets);
         return view('fil_rouge/logUser', ['tickets' => $tickets]);
     }
     public function displayOneTicket($n)
@@ -27,15 +27,40 @@ class TicketController extends Controller
         // récuperation status
         $statutModel = new StatutModel();
         $statut = $statutModel->getStatutTicket($n);
+
+        // récuperation nom de l'auteur
+        $user = new User();
+        $user = $user->getName($ticket->User_id);
         if ($ticket != null) {
-            return view('statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut]);
+            return view('fil_rouge/statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut, 'user' => $user]);
+        } else {
+            return view('erreur');
+        }
+    }
+    public function ChangeStatut($n)
+    {
+        $ticketModel = new TicketModel();
+        $ticket = $ticketModel->get($n);
+        // récuration de tous les messages du tickets
+        $messagesModel = new MessageModel();
+        $messages = $messagesModel->getMessageTicket($n);
+        // récuperation status
+        $statutModel = new StatutModel();
+
+        $statut = $statutModel->changeStatut($n, $_POST["statut_id"]);
+        $statut = $statutModel->getStatutTicket($n);
+        // récuperation nom de l'auteur
+        $user = new User();
+        $user = $user->getName($ticket->User_id);
+        if ($ticket != null) {
+            return view('fil_rouge/statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut, 'user' => $user]);
         } else {
             return view('erreur');
         }
     }
     public function createTicket()
     {
-        return view('creationTicket');
+        return view('fil_rouge/creationTicket');
     }
     public function createTicketPost(Request $request)
     {
@@ -61,7 +86,7 @@ class TicketController extends Controller
     }
     public function createMessage()
     {
-        return view('creationMessage');
+        return view('fil_rouge/creationMessage');
     }
     public function storeMessage(Request $request)
     {
@@ -75,7 +100,6 @@ class TicketController extends Controller
                 ->withErrors($validator);
         } else {
             $data = $request->all();
-            dd($data);
             $messageModel = new MessageModel();
             $ticketId = $messageModel->insert($data);
             return redirect()->route('statutTicket', ['n' => $ticketId]);
