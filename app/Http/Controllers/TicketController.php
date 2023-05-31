@@ -27,9 +27,9 @@ class TicketController extends Controller
         // récuperation status
         $statutModel = new StatutModel();
         $statut = $statutModel->getStatutTicket($n);
-
         // récuperation nom de l'auteur
         $user = new User();
+        // dd($ticket);
         $user = $user->getName($ticket->User_id);
         if ($ticket != null) {
             return view('fil_rouge/statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut, 'user' => $user]);
@@ -47,7 +47,7 @@ class TicketController extends Controller
         // récuperation status
         $statutModel = new StatutModel();
 
-        $statut = $statutModel->changeStatut($n, $_POST["statut_id"]);
+        $statut = $statutModel->changeStatut($n);
         $statut = $statutModel->getStatutTicket($n);
         // récuperation nom de l'auteur
         $user = new User();
@@ -84,9 +84,10 @@ class TicketController extends Controller
         }
 
     }
-    public function createMessage()
+    public function createMessage(Request $request)
     {
-        return view('fil_rouge/creationMessage');
+        $ticketId = $request->route('ticketId');
+        return view('fil_rouge/creationMessage', ['ticketId' => $ticketId]);
     }
     public function storeMessage(Request $request)
     {
@@ -101,7 +102,10 @@ class TicketController extends Controller
         } else {
             $data = $request->all();
             $messageModel = new MessageModel();
-            $ticketId = $messageModel->insert($data);
+            $messageModel->insert($data);
+
+
+            $ticketId = $request->route('ticketId');
             return redirect()->route('statutTicket', ['n' => $ticketId]);
         }
 

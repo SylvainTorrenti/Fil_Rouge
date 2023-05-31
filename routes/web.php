@@ -45,8 +45,9 @@ Route::post('/statutTicket/{n}/statut', [TicketController::class, 'ChangeStatut'
 
 Route::get('/creationTicket', [TicketController::class, 'createTicket'])->middleware('auth')->Name('creationTicket');
 
-Route::get('/creationMessage/{n}', [TicketController::class, 'createMessage'])->middleware('auth')->Name('creationMessage');
+Route::get('/creationMessage/{ticketId}', [TicketController::class, 'createMessage'])->middleware('auth')->Name('creationMessage');
 
+Route::post('/creationMessage/{ticketId}', [TicketController::class, 'storeMessage'])->middleware('auth')->Name('storeMessage');
 
 //a revoir
 
@@ -54,7 +55,6 @@ Route::get('/creationMessage/{n}', [TicketController::class, 'createMessage'])->
 Route::get('/creationCompte', [UserController::class, 'createAccount'])->Name('creationCompte');
 Route::post('/creationCompte', [UserController::class, 'storeAccount'])->Name('storeAccount');
 
-Route::post('/creationMessage', [TicketController::class, 'storeMessage'])->Name('storeMessage');
 
 Route::post('/creationTicket', [TicketController::class, 'storeTicket'])->Name('storeTicket');
 

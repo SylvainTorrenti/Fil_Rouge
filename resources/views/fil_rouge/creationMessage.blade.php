@@ -1,6 +1,6 @@
 @extends('template.pageCommune')
 @section('content')
-    <form id="creationMessage" action="{{ route('storeMessage') }}" method="post">
+    <form id="creationMessage" action="{{ route('storeMessage', ['ticketId' => $ticketId]) }}" method="post">
         @csrf
         <fieldset>
             <legend>Entrez votre message</legend>

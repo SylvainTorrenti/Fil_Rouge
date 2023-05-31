@@ -10,11 +10,14 @@
                 <li>Il n'y a pas encore de message</li>
             @else
                 @forelse ($messages as $message)
-                    <li><span id="date">{{ $message->CreatedAt }} :</span> {{ $message->Content }} </li>
+                    <li><span><strong>{{ $message->name }} </strong></span><span id="date">{{ $message->CreatedAt }}
+                            :</span>
+                        {{ $message->Content }} </li>
                 @empty
                 @endforelse
             @endif
-            <p><button><a href="{{ route('creationMessage', ['n' => $ticket->Id]) }}">Ecrire un message</a></button></p>
+            <p><button><a href="{{ route('creationMessage', ['ticketId' => $ticket->Id]) }}">Ecrire un message</a></button>
+            </p>
         </ul>
         </p>
         <p><strong>L'auteur est : </strong>{{ $user->name }}</p>

@@ -23,7 +23,6 @@
                             <li><strong>Status : </strong>{{ $ticket->label_status }}</li>
                             {{-- relier status id avec le bon label --}}
                             <li><button><a href="{{ route('statutTicket', ['n' => $ticket->Id]) }}">Info</a></button></li>
-                            <li><button><a href="{{ route('creationMessage', ['n' => $ticket->Id]) }}">Message</a></button>
                             </li>
                             <li></li>
                         </ul>
