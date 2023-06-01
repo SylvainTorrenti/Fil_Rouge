@@ -11,19 +11,22 @@ use Illuminate\Http\Request;
 class MessageModel extends Model
 {
     use HasFactory;
-    public function insert($data)
+    public function insert($data, $ticketId)
     {
-        return DB::table('Message')->insertGetId([
-            'Content' => $data['Content'],
-            'CreatedAt' => Carbon::now(),
-            'User_id' => auth()->user()->id
-        ]);
-    }
-    public function getAll()
-    {
-        return DB::select("select * from Message");
-    }
+        DB::transaction(function () use ($data, $ticketId) {
 
+            $IdMessage = DB::table('Message')->insertGetId([
+                'Content' => $data['Content'],
+                'CreatedAt' => Carbon::now(),
+                'User_id' => auth()->user()->id
+            ]);
+            DB::table('TicketMessage')->insert([
+                'IdMessage' => $IdMessage,
+                'IdTicket' => $ticketId
+            ]);
+
+        });
+    }
     public function getMessageTicket($n)
     {
         $results = DB::select('SELECT m.Content , m.CreatedAt ,u.name

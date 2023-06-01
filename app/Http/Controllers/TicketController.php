@@ -89,7 +89,7 @@ class TicketController extends Controller
         $ticketId = $request->route('ticketId');
         return view('fil_rouge/creationMessage', ['ticketId' => $ticketId]);
     }
-    public function storeMessage(Request $request)
+    public function storeMessage(Request $request, $ticketId)
     {
         $rules = [
             'Content' => 'required|string|min:3|max:255',
@@ -102,9 +102,7 @@ class TicketController extends Controller
         } else {
             $data = $request->all();
             $messageModel = new MessageModel();
-            $messageModel->insert($data);
-
-
+            $messageModel->insert($data, $ticketId);
             $ticketId = $request->route('ticketId');
             return redirect()->route('statutTicket', ['n' => $ticketId]);
         }
