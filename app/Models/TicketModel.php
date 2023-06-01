@@ -13,9 +13,19 @@ class TicketModel extends Model
     use HasFactory;
     public function getAll()
     {
-        return DB::select("select t.*, u.name as name_autor, s.Label as label_status from Ticket as t
+        if (auth()->user()->isAdmin()) {
+            return DB::select('select t.*, u.name as name_autor, s.Label as label_status from Ticket as t
         Inner Join Status as s on t.Status_id = s.Id
-        Inner Join users as u on t.User_id = u.id");
+        Inner Join users as u on t.User_id = u.id');
+        } else {
+
+            return DB::select('select t.*, u.name as name_autor, s.Label as label_status from Ticket as t
+    Inner Join Status as s on t.Status_id = s.Id
+    Inner Join users as u on t.User_id = u.id
+    where u.id = ? ', [auth()->user()->id]);
+        }
+
+
     }
     public function get($n)
     {

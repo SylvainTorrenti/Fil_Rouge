@@ -50,4 +50,22 @@ class User extends Authenticatable
         return DB::selectOne('select name from users u
         Join Ticket t on u.id = t.User_id  where t.User_id = ?;', [$user_id]);
     }
+    public function isAdmin()
+    {
+        $result = DB::selectOne('select Label
+        FROM `Role` r
+        inner join UserRole ur on r.Id = ur.IdRole
+        inner join users u on ur.IdUser = u.id
+        where u.id = ?;',
+            [auth()->user()->id]
+        );
+        if (
+            $result->Label == 'Administrateur'
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

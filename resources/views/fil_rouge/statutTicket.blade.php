@@ -23,9 +23,11 @@
         <p><strong>L'auteur est : </strong>{{ $user->name }}</p>
         <p><strong>Le ticket a été créé le :</strong>{{ $ticket->CreatedAt }}</p>
         <p><strong>Statut : </strong>{{ $statut->Label }}
-            <button
-                onclick="changeStatutTicket({{ $ticket->Id }},'{{ route('changeStatut', ['n' => $ticket->Id]) }}')">Changer
-                le statut</a></button>
+            @if (auth()->user()->isAdmin())
+                <button
+                    onclick="changeStatutTicket({{ $ticket->Id }},'{{ route('changeStatut', ['n' => $ticket->Id]) }}')">Changer
+                    le statut</a></button>
+            @endif
         </p>
 
         <p><a href="{{ route('logUser') }}">Retour a enlever</a></p>
