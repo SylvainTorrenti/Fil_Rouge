@@ -17,11 +17,18 @@ class StatutModel extends Model
         where t.Id = ?', [$n]);
         return $results;
     }
-    public function changeStatut($n)
+
+    /**
+     * Permet de modifier le statut d'un ticket
+     * @param (int) $ticket_id Identifiant du ticket
+     * @param (int) $statut_id Identifiant du statut
+     */
+    public function changeStatut($ticket_id, $statut_id)
     {
+
         $results = DB::table('Ticket')
-            ->where('Id', $n)
-            ->update(['Status_id' => 2]);
+            ->where('Id', $ticket_id)
+            ->update(['Status_id' => $statut_id]);
         return $results;
     }
 }

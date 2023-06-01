@@ -37,23 +37,27 @@ class TicketController extends Controller
             return view('erreur');
         }
     }
-    public function ChangeStatut($n)
+    public function ChangeStatut(Request $request)
     {
+
+        $ticket_id = $request->route("ticketId");
         $ticketModel = new TicketModel();
-        $ticket = $ticketModel->get($n);
+        $ticket = $ticketModel->get($ticket_id);
+
+        $newStatutId = ($ticket->Status_id == 1) ? 2 : 1;
         // récuration de tous les messages du tickets
         $messagesModel = new MessageModel();
-        $messages = $messagesModel->getMessageTicket($n);
+        $messages = $messagesModel->getMessageTicket($ticket_id);
         // récuperation status
         $statutModel = new StatutModel();
 
-        $statut = $statutModel->changeStatut($n);
-        $statut = $statutModel->getStatutTicket($n);
+        $statut = $statutModel->changeStatut($ticket_id, $newStatutId);
+        $statut = $statutModel->getStatutTicket($ticket_id);
         // récuperation nom de l'auteur
         $user = new User();
         $user = $user->getName($ticket->User_id);
         if ($ticket != null) {
-            return view('fil_rouge/statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut, 'user' => $user]);
+            return $statut;
         } else {
             return view('erreur');
         }

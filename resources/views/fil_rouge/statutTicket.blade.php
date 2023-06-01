@@ -22,10 +22,11 @@
         </p>
         <p><strong>L'auteur est : </strong>{{ $user->name }}</p>
         <p><strong>Le ticket a été créé le :</strong>{{ $ticket->CreatedAt }}</p>
-        <p><strong>Statut : </strong>{{ $statut->Label }}
+        <p><strong>Statut : </strong>
+            <span id="statut-label">{{ $statut->Label }}</span>
             @if (auth()->user()->isAdmin())
                 <button
-                    onclick="changeStatutTicket({{ $ticket->Id }},'{{ route('changeStatut', ['n' => $ticket->Id]) }}')">Changer
+                    onclick="changeStatutTicket({{ $ticket->Id }},'{{ route('changeStatut', ['ticketId' => $ticket->Id]) }}')">Changer
                     le statut</a></button>
             @endif
         </p>
@@ -39,15 +40,14 @@
                         method: "POST",
                         headers: {
                             "X-CSRF-Token": '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({
-                            Id: idTicket,
-                            statut_id: 2,
-                        })
+                        }
                     })
                     .then(response => {
                         if (response.ok) {
-                            console.log("ok");
+                            response.json().then(body => {
+                                document.getElementById("statut-label").innerText = body.Label;
+                            });
+
                         }
                     });
 
