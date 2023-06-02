@@ -132,6 +132,7 @@ ul li {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 #statut {
@@ -156,4 +157,8 @@ td {
     border: solid 2px;
     height: fit-content;
     overflow-wrap: break-word;
+}
+
+#TitrePrincipale {
+    color: white;
 }

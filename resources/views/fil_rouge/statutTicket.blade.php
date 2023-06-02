@@ -3,7 +3,6 @@
     <div id="statut">
         <h2><strong>Ticket Numero : </strong>{{ $ticket->Id }}</h2>
         <p><strong>Le ticket concerne : </strong>{{ $ticket->Sujet }}</p>
-        <p><strong>La panne est : </strong>{{ $ticket->Type_panne_id }}</p>
         <p><strong>Message :</strong>
         <ul>
             @if ($messages == null)
@@ -31,7 +30,7 @@
             @endif
         </p>
 
-        <p><a href="{{ route('logUser') }}">Retour a enlever</a></p>
+        <p><button><a href="{{ route('logUser') }}">Retour aux tickets</a></button></p>
         <script>
             function changeStatutTicket(idTicket, route) {
 

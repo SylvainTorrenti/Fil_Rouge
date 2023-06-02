@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +26,14 @@ class StatutModel extends Model
      */
     public function changeStatut($ticket_id, $statut_id)
     {
-
-        $results = DB::table('Ticket')
-            ->where('Id', $ticket_id)
-            ->update(['Status_id' => $statut_id]);
-        return $results;
+        DB::transaction(function () use ($ticket_id, $statut_id) {
+            DB::table('Ticket')
+                ->where('Id', $ticket_id)
+                ->update(['Status_id' => $statut_id]);
+            $results = DB::table('Ticket')
+                ->where('Id', $ticket_id)
+                ->update(['UpdatedAt' => Carbon::now()]);
+            return $results;
+        });
     }
 }

@@ -11,7 +11,7 @@
                 {{ $message }}
             @enderror
             <label for="Prenom">Prenom*</label>
-            <input type="text" id="Prenom" name="Prenom" />
+            <input type="text" id="Prenom" name="Prenom" value="{{ old('Prenom') }}" />
             @error('Prenom')
                 {{ $message }}
             @enderror
@@ -38,7 +38,7 @@
                 {{ $message }}
             @enderror
             <label for="Telephone">Telephone</label>
-            <input type="tel" id="Telephone" name="Telephone" />
+            <input type="tel" id="Telephone" name="Telephone" value="{{ old('Telephone') }}" />
             @error('Telephone')
                 {{ $message }}
             @enderror

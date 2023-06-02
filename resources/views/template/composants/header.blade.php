@@ -1,7 +1,9 @@
 <header>
     <div id="logo"><img src="/image/logo.webp" alt="Logo 2ISA"></div>
     <div id="Titre_Header">
-        <h1>Maintenance du Parc Informatique</h1>
+        <a href="{{ route('acceuil') }}">
+            <h1 id="TitrePrincipale">Maintenance du Parc Informatique</h1>
+        </a>
     </div>
     @if (!auth()->guest())
         <div id="textAvatar">{{ auth()->user()->name }} <img id="avatar" src="/image/profile.png" alt="avatar"></div>

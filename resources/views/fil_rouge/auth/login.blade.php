@@ -32,5 +32,5 @@
         </div>
         </form>
     @endif
-    <a href="{{ route('logUser') }}">A enlever</a>
+    <a href="{{ route('logUser') }}">Tickets</a>
 @endsection

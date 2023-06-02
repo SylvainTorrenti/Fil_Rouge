@@ -27,9 +27,10 @@ class TicketModel extends Model
 
 
     }
-    public function get($n)
+    public function get($ticketId)
     {
-        return DB::selectOne('select * from Ticket where Id = ?;', [$n]);
+        return DB::selectOne('select * from Ticket where Id = ?;', [$ticketId]);
+
     }
     public function insert($data)
     {

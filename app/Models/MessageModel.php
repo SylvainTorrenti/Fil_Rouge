@@ -24,17 +24,20 @@ class MessageModel extends Model
                 'IdMessage' => $IdMessage,
                 'IdTicket' => $ticketId
             ]);
-
+            $results = DB::table('Ticket')
+                ->where('Id', $ticketId)
+                ->update(['UpdatedAt' => Carbon::now()]);
+            return $results;
         });
     }
-    public function getMessageTicket($n)
+    public function getMessageTicket($ticketId)
     {
         $results = DB::select('SELECT m.Content , m.CreatedAt ,u.name
         from Message m
         INNER join TicketMessage tm on tm.IdMessage = m.Id
         inner join Ticket t  on t.Id = tm.IdTicket
         inner join users u on m.User_id = u.id
-        where tm.IdTicket  = ? ', [$n]);
+        where tm.IdTicket  = ? ', [$ticketId]);
         return $results;
     }
 }

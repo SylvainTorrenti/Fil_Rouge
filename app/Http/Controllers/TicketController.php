@@ -17,19 +17,18 @@ class TicketController extends Controller
         $tickets = $ticketModel->getAll();
         return view('fil_rouge/logUser', ['tickets' => $tickets]);
     }
-    public function displayOneTicket($n)
+    public function displayOneTicket($ticket_id)
     {
         $ticketModel = new TicketModel();
-        $ticket = $ticketModel->get($n);
+        $ticket = $ticketModel->get($ticket_id);
         // récuration de tous les messages du tickets
         $messagesModel = new MessageModel();
-        $messages = $messagesModel->getMessageTicket($n);
+        $messages = $messagesModel->getMessageTicket($ticket_id);
         // récuperation status
         $statutModel = new StatutModel();
-        $statut = $statutModel->getStatutTicket($n);
+        $statut = $statutModel->getStatutTicket($ticket_id);
         // récuperation nom de l'auteur
         $user = new User();
-        // dd($ticket);
         $user = $user->getName($ticket->User_id);
         if ($ticket != null) {
             return view('fil_rouge/statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut, 'user' => $user]);
