@@ -1,7 +1,11 @@
 @extends('template.pageCommune')
 @section('content')
     @if (!auth()->guest())
-        <div>Vous êtes déja connecté!</div>
+        <div>
+            <p>Vous êtes déja connecté en tant que : {{ auth()->user()->name }}</p>
+            <p>Pour vous déconnecter veuillez appuyer sur le bouton "se déconnecter" en haut a droite de la page.</p>
+        </div>
+        <div><button><a href="{{ route('logUser') }}">Retour à la liste des tickets</a></button></div>
     @else
         <h2 id="Titre_Acceuil">Bienvenue sur notre plateforme de maintenance informatique de 2ISA.</h2>
         <div id="container">
@@ -28,9 +32,8 @@
                     Effacer
                 </button>
                 <p><a href="mdpoubli">Mot de pass/login oublié?</a></p>
-                <p><a id="creation" href="creationCompte">Creation de compte</a></p>
+                <p><button id="ButtonCreation"><a id="creation" href="creationCompte">Creation de compte</a></button></p>
         </div>
         </form>
     @endif
-    <a href="{{ route('logUser') }}">Tickets</a>
 @endsection
