@@ -18,7 +18,7 @@
                                 <li><strong>Derniére mise à jour faite le : </strong>{{ $ticket->UpdatedAt }}</li>
                             @endif
                             <li><strong>Status : </strong>{{ $ticket->label_status }}</li>
-                            <li><button><a href="{{ route('statutTicket', ['n' => $ticket->Id]) }}">Info</a></button>
+                            <li><button><a href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button>
                             </li>
 
                         </ul>

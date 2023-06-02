@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\DB;
 class StatutModel extends Model
 {
     use HasFactory;
-    public function getStatutTicket($n)
+    public function getStatutTicket($ticket_id)
     {
         $results = DB::selectOne('SELECT Label
         from Status s
         join Ticket t on s.Id = t.Status_id
-        where t.Id = ?', [$n]);
+        where t.Id = ?', [$ticket_id]);
         return $results;
     }
 

@@ -39,7 +39,7 @@ Route::get('fil_rouge/logUser', [TicketController::class, 'displayTickets'])->mi
 Route::post('fil_rouge/logUser', [TicketController::class, 'createTicketPost'])->middleware('auth')->Name('logUserPost');
 
 
-Route::get('/statutTicket/{n}', [TicketController::class, 'displayOneTicket'])->middleware('auth')->Name('statutTicket');
+Route::get('/statutTicket/{ticketId}', [TicketController::class, 'displayOneTicket'])->middleware('auth')->Name('statutTicket');
 
 Route::post('/statutTicket/{ticketId}/statut', [TicketController::class, 'ChangeStatut'])->middleware('auth')->Name('changeStatut');
 
