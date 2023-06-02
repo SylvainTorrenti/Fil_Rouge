@@ -52,5 +52,4 @@
     </div>
     <a href="{{ route('login') }}">Déjà enregistré ?</a>
     </form>
-    <p><a href="acceuil">Retour a enlever</a></p>
 @endsection

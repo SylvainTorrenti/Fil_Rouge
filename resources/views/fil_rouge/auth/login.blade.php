@@ -2,7 +2,7 @@
 @section('content')
     @if (!auth()->guest())
         <div>
-            <p>Vous êtes déja connecté en tant que : {{ auth()->user()->name }}</p>
+            <p>Vous êtes déja connecté en tant que : {{ auth()->user()->name }} {{ auth()->user()->Prenom }}</p>
             <p>Pour vous déconnecter veuillez appuyer sur le bouton "se déconnecter" en haut a droite de la page.</p>
         </div>
         <div><button><a href="{{ route('logUser') }}">Retour à la liste des tickets</a></button></div>
