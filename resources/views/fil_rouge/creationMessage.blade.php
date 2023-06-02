@@ -10,6 +10,6 @@
         @error('Content')
             {{ $message }}
         @enderror
-        <p><a href="acceuil">Retour a enlever</a></p>
+
     </form>
 @endsection
