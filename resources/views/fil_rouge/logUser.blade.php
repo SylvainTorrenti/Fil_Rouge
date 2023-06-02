@@ -50,13 +50,14 @@
                         </ul>
                     @empty
                     @endforelse
+                    <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>
                 @else
                     <div>Vous n'avez pas de tickets</div>
+                    <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>
         @endif
         </ul>
 
 
     </div>
-    <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>
 
 @endsection
