@@ -15,7 +15,9 @@
                 @empty
                 @endforelse
             @endif
-            <p><button><a href="{{ route('creationMessage', ['ticketId' => $ticket->Id]) }}">Ecrire un message</a></button>
+            <p><button id="ButtonCreation"><a id="creation"
+                        href="{{ route('creationMessage', ['ticketId' => $ticket->Id]) }}">Ecrire un
+                        message</a></button>
             </p>
         </ul>
         </p>
@@ -24,9 +26,9 @@
         <p><strong>Statut : </strong>
             <span id="statut-label">{{ $statut->Label }}</span>
             @if (auth()->user()->isAdmin())
-                <button
+                <button id="ButtonStatut"
                     onclick="changeStatutTicket({{ $ticket->Id }},'{{ route('changeStatut', ['ticketId' => $ticket->Id]) }}')">Changer
-                    le statut</a></button>
+                    le statut</button>
             @endif
         </p>
 
