@@ -6,7 +6,8 @@
         </a>
     </div>
     @if (!auth()->guest())
-        <div id="textAvatar">{{ auth()->user()->name }} <img id="avatar" src="/image/profile.png" alt="avatar"></div>
+        <div id="textAvatar">{{ auth()->user()->name }} {{ auth()->user()->Prenom }} <img id="avatar"
+                src="/image/profile.png" alt="avatar"></div>
         <form method="POST" action="{{ route('logout') }}">
             <button type="submit">Se déconnecter</button>
             @csrf
