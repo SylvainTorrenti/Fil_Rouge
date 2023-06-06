@@ -36,10 +36,12 @@ Route::get('/acceuil', function () {
 
 
 Route::get('fil_rouge/logUser', [TicketController::class, 'displayTickets'])->middleware('auth')->Name('logUser');
-Route::post('fil_rouge/logUser', [TicketController::class, 'createTicketPost'])->middleware('auth')->Name('logUserPost');
 
 
 Route::get('/statutTicket/{ticketId}', [TicketController::class, 'displayOneTicket'])->middleware('auth')->Name('statutTicket');
+
+
+Route::post('fil_rouge/logUser', [TicketController::class, 'createTicketPost'])->middleware('auth')->Name('logUserPost');
 
 Route::post('/statutTicket/{ticketId}/statut', [TicketController::class, 'ChangeStatut'])->middleware('auth')->Name('changeStatut');
 
@@ -48,7 +50,6 @@ Route::get('/creationTicket', [TicketController::class, 'createTicket'])->middle
 Route::get('/creationMessage/{ticketId}', [TicketController::class, 'createMessage'])->middleware('auth')->Name('creationMessage');
 
 Route::post('/creationMessage/{ticketId}', [TicketController::class, 'storeMessage'])->middleware('auth')->Name('storeMessage');
-
 //a revoir
 
 

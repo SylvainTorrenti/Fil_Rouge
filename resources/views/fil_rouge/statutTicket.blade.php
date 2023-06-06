@@ -29,7 +29,9 @@
             </p>
         </ul>
         </p>
-        <p><strong>L'auteur est : </strong>{{ $user->Prenom }} {{ $user->name }}</p>
+        @if (auth()->user()->isAdmin())
+            <p><strong>L'auteur est : </strong>{{ $user->Prenom }} {{ $user->name }}</p>
+        @endif
         <p><strong>Le ticket a été créé le :</strong>{{ $ticket->CreatedAt }}</p>
         <p><strong>Statut : </strong>
             <span id="statut-label">{{ $statut->Label }}</span>

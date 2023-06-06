@@ -35,7 +35,13 @@ class TicketModel extends Model
     public function insert($data)
     {
 
-        return DB::table('Ticket')->insertGetId(['Sujet' => $data['Sujet'], 'Status_id' => 1, 'CreatedAt' => Carbon::now(), 'User_id' => auth()->user()->id, 'Materiel' => $data['materiel']]);
+        return DB::table('Ticket')->insertGetId([
+            'Sujet' => $data['Sujet'],
+            'Materiel' => $data['materiel'],
+            'Status_id' => 1,
+            'CreatedAt' => Carbon::now(),
+            'User_id' => auth()->user()->id
+        ]);
 
     }
 }

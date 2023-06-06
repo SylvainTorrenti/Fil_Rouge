@@ -22,5 +22,4 @@
             <p>Tout les champs sont obligatoire</p>
     </div>
     </form>
-    <p><a href="{{ route('acceuil') }}">Retour a enlever</a></p>
 @endsection

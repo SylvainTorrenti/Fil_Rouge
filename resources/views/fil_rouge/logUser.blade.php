@@ -11,15 +11,18 @@
                             <span id="titreTicket">Ticket {{ $ticket->Id }} : </span>
                         </li>
                         <ul>
-                            <li><strong>Sujet : </strong>{{ $ticket->Materiel }} </li>
+                            <li><strong>Materiel : </strong>{{ $ticket->Materiel }} </li>
+                            <li><strong>Le probléme rencontrer est :</strong>{{ $ticket->Sujet }}</li>
                             <li><strong>Auteur : </strong>{{ $ticket->prenom }} {{ $ticket->name_autor }}</li>
                             <li><strong>Date de creations : </strong>{{ $ticket->CreatedAt }}</li>
                             @if ($ticket->UpdatedAt != null)
                                 <li><strong>Derniére mise à jour faite le : </strong>{{ $ticket->UpdatedAt }}</li>
                             @endif
-                            <li><strong>Status : </strong>{{ $ticket->label_status }}</li>
-                            <li><button><a href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button>
+                            <li><strong>Status : </strong>{{ $ticket->label_status }} <button><a
+                                        href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button>
                             </li>
+
+
 
                         </ul>
 
@@ -36,7 +39,8 @@
                                 <span id="titreTicket">Ticket {{ $ticket->Id }} : </span>
                             </li>
                             <ul>
-                                <li><strong>Sujet : </strong>{{ $ticket->Sujet }} </li>
+                                <li><strong>Materiel : </strong>{{ $ticket->Materiel }} </li>
+                                <li><strong>Le probléme rencontrer est :</strong>{{ $ticket->Sujet }}</li>
                                 <li><strong>Date de creations : </strong>{{ $ticket->CreatedAt }}</li>
                                 @if ($ticket->UpdatedAt != null)
                                     <li><strong>Derniére mise à jour faite le : </strong>{{ $ticket->UpdatedAt }}</li>
