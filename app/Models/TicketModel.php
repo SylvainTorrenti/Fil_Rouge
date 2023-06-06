@@ -14,7 +14,7 @@ class TicketModel extends Model
     public function getAll()
     {
         if (auth()->user()->isAdmin()) {
-            return DB::select('select t.*, u.name as name_autor, s.Label as label_status from Ticket as t
+            return DB::select('select t.*, u.name as name_autor, s.Label as label_status, Prenom as prenom from Ticket as t
         Inner Join Status as s on t.Status_id = s.Id
         Inner Join users as u on t.User_id = u.id');
         } else {
@@ -35,7 +35,7 @@ class TicketModel extends Model
     public function insert($data)
     {
 
-        return DB::table('Ticket')->insertGetId(['Sujet' => $data['Sujet'], 'Status_id' => 1, 'CreatedAt' => Carbon::now(), 'User_id' => auth()->user()->id]);
+        return DB::table('Ticket')->insertGetId(['Sujet' => $data['Sujet'], 'Status_id' => 1, 'CreatedAt' => Carbon::now(), 'User_id' => auth()->user()->id, 'Materiel' => $data['materiel']]);
 
     }
 }

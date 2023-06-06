@@ -82,7 +82,7 @@ class TicketController extends Controller
 
             $ticketModel = new TicketModel();
             $ticketId = $ticketModel->insert($data);
-            return redirect()->route('statutTicket', ['n' => $ticketId]);
+            return redirect()->route('statutTicket', ['ticketId' => $ticketId]);
 
         }
 
@@ -107,7 +107,7 @@ class TicketController extends Controller
             $messageModel = new MessageModel();
             $messageModel->insert($data, $ticketId);
             $ticketId = $request->route('ticketId');
-            return redirect()->route('statutTicket', ['n' => $ticketId]);
+            return redirect()->route('statutTicket', ['ticketId' => $ticketId]);
         }
 
     }

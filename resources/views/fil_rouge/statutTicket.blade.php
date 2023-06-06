@@ -2,16 +2,24 @@
 @section('content')
     <div id="statut">
         <h2><strong>Ticket Numero : </strong>{{ $ticket->Id }}</h2>
-        <p><strong>Le ticket concerne : </strong>{{ $ticket->Sujet }}</p>
+        <p><strong>Le ticket concerne : </strong>{{ $ticket->Materiel }}</p>
+        <p><strong>Le probléme rencontrer est : </strong>{{ $ticket->Sujet }}</p>
         <p><strong>Message :</strong>
         <ul>
             @if ($messages == null)
                 <li>Il n'y a pas encore de message</li>
             @else
                 @forelse ($messages as $message)
-                    <li><span><strong>{{ $message->name }} </strong></span><span id="date">{{ $message->CreatedAt }}
-                            :</span>
-                        {{ $message->Content }} </li>
+                    @if (auth()->user()->id == $message->user_id)
+                        <li><span><strong>Vous : </strong></span><span id="date">{{ $message->CreatedAt }}
+                                :</span>
+                            {{ $message->Content }} </li>
+                    @else
+                        <li><span><strong>{{ $message->Prenom }} {{ $message->name }} :</strong></span><span
+                                id="date">{{ $message->CreatedAt }}
+                                :</span>
+                            {{ $message->Content }} </li>
+                    @endif
                 @empty
                 @endforelse
             @endif
@@ -21,7 +29,7 @@
             </p>
         </ul>
         </p>
-        <p><strong>L'auteur est : </strong>{{ $user->name }}</p>
+        <p><strong>L'auteur est : </strong>{{ $user->Prenom }} {{ $user->name }}</p>
         <p><strong>Le ticket a été créé le :</strong>{{ $ticket->CreatedAt }}</p>
         <p><strong>Statut : </strong>
             <span id="statut-label">{{ $statut->Label }}</span>

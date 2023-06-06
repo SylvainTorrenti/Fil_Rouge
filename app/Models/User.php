@@ -47,7 +47,7 @@ class User extends Authenticatable
     ];
     public function getName($user_id)
     {
-        return DB::selectOne('select name from users u
+        return DB::selectOne('select name,Prenom from users u
         Join Ticket t on u.id = t.User_id  where t.User_id = ?;', [$user_id]);
     }
     public function isAdmin()

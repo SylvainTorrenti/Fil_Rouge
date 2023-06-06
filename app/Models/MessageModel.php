@@ -32,7 +32,7 @@ class MessageModel extends Model
     }
     public function getMessageTicket($ticketId)
     {
-        $results = DB::select('SELECT m.Content , m.CreatedAt ,u.name
+        $results = DB::select('SELECT m.Content , m.CreatedAt ,u.name, u.Prenom, u.Id as user_id
         from Message m
         INNER join TicketMessage tm on tm.IdMessage = m.Id
         inner join Ticket t  on t.Id = tm.IdTicket
