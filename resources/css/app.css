@@ -172,14 +172,13 @@ td {
     border-radius: 15px;
     height: 45px;
     font-weight: bold;
-    margin-left: 90px;
-    margin-top: 20px;
+    display: inline-block;
 }
 
 #ButtonStatut {
     border-radius: 15px;
     height: 45px;
     font-weight: bold;
-    margin-left: 90px;
+    margin-bottom: 20px;
     margin-top: 20px;
 }

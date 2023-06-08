@@ -4,7 +4,7 @@
         @csrf
         <fieldset>
             <legend>Entrez votre message</legend>
-            <textarea name="Content" id="Content" cols="30" rows="10"></textarea>
+            <textarea name="Content" id="Content" cols="30" rows="10" minlength="3" maxlength="255"></textarea>
         </fieldset>
         <button type="submit">Envoyer</button>
         @error('Content')

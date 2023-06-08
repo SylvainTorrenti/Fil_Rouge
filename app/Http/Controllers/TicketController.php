@@ -68,23 +68,16 @@ class TicketController extends Controller
     public function createTicketPost(Request $request)
     {
 
-        $rules = [
+        $request->validate([
             'materiel' => 'required|string|min:3|max:255',
             'Sujet' => 'required|string|min:3|max:255',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('insert')
-                ->withInput($request->all())
-                ->withErrors($validator);
-        } else {
-            $data = $request->all();
+        ]);
+        $input = $request->all();
+        $ticketModel = new TicketModel();
+        $ticketId = $ticketModel->insert($input);
+        return redirect()->route('statutTicket', ['ticketId' => $ticketId]);
 
-            $ticketModel = new TicketModel();
-            $ticketId = $ticketModel->insert($data);
-            return redirect()->route('statutTicket', ['ticketId' => $ticketId]);
 
-        }
 
     }
     public function createMessage(Request $request)
