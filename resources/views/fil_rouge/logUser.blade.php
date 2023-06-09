@@ -11,14 +11,14 @@
                             <span id="titreTicket">Ticket {{ $ticket->Id }} : </span>
                         </li>
                         <ul>
-                            <li><strong>Materiel : </strong>{{ $ticket->Materiel }} </li>
+                            <li><strong>Matériel : </strong>{{ $ticket->Materiel }} </li>
                             <li><strong>Le probléme rencontrer est :</strong>{{ $ticket->Sujet }}</li>
                             <li><strong>Auteur : </strong>{{ $ticket->prenom }} {{ $ticket->name_autor }}</li>
-                            <li><strong>Date de creations : </strong>{{ $ticket->CreatedAt }}</li>
+                            <li><strong>Date de creation : </strong>{{ $ticket->CreatedAt }}</li>
                             @if ($ticket->UpdatedAt != null)
                                 <li><strong>Derniére mise à jour faite le : </strong>{{ $ticket->UpdatedAt }}</li>
                             @endif
-                            <li><strong>Status : </strong>{{ $ticket->label_status }} <button><a
+                            <li><strong>Statut : </strong>{{ $ticket->label_status }} <button><a
                                         href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button>
                             </li>
 
@@ -55,7 +55,7 @@
                         </ul>
                     @empty
                     @endforelse
-                    <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>
+                    <div><button><a href="{{ route('creationTicket') }}">Créer un ticket</a></button></div>
                 @else
                     <div>Vous n'avez pas de tickets</div>
                     <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>

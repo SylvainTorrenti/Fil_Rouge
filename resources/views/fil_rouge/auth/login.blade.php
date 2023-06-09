@@ -2,8 +2,8 @@
 @section('content')
     @if (!auth()->guest())
         <div>
-            <p>Vous êtes déja connecté en tant que : {{ auth()->user()->name }} {{ auth()->user()->Prenom }}</p>
-            <p>Pour vous déconnecter veuillez appuyer sur le bouton "se déconnecter" en haut a droite de la page.</p>
+            <p>Vous êtes déjà connecté en tant que : {{ auth()->user()->name }} {{ auth()->user()->Prenom }}</p>
+            <p>Pour vous déconnecter veuillez appuyer sur le bouton "se déconnecter" en haut à droite de la page.</p>
         </div>
         <div><button><a href="{{ route('logUser') }}">Retour à la liste des tickets</a></button></div>
     @else
@@ -31,8 +31,8 @@
                 <button type="reset">
                     Effacer
                 </button>
-                <p><a href="mdpoubli">Mot de pass/login oublié?</a></p>
-                <p><button id="ButtonCreation"><a id="creation" href="creationCompte">Creation de compte</a></button></p>
+                <p><a href="mdpoubli">Mot de passe/login oublié?</a></p>
+                <p><button id="ButtonCreation"><a id="creation" href="creationCompte">Création de compte</a></button></p>
         </div>
         </form>
     @endif

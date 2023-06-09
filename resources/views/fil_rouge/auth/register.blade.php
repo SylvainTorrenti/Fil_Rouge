@@ -10,7 +10,7 @@
             @error('name')
                 {{ $message }}
             @enderror
-            <label for="Prenom">Prenom*</label>
+            <label for="Prenom">Prénom*</label>
             <input type="text" id="Prenom" name="Prenom" value="{{ old('Prenom') }}" />
             @error('Prenom')
                 {{ $message }}
@@ -37,7 +37,7 @@
             @error('email')
                 {{ $message }}
             @enderror
-            <label for="Telephone">Telephone</label>
+            <label for="Telephone">Téléphone</label>
             <input type="tel" id="Telephone" name="Telephone" value="{{ old('Telephone') }}" />
             @error('Telephone')
                 {{ $message }}
@@ -48,7 +48,7 @@
             <button type="reset">
                 Effacer
             </button>
-            <p>Les champs avec * sont obligatoire</p>
+            <p>Les champs avec * sont obligatoires</p>
     </div>
     <a href="{{ route('login') }}">Déjà enregistré ?</a>
     </form>
