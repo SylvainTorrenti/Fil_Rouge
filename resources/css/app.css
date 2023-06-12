@@ -63,7 +63,8 @@ textarea {
     min-height: 200px;
 }
 
-#condition {
+#condition,
+.ticketMax {
     font-size: small;
 }
 
@@ -116,18 +117,40 @@ footer {
     font-size: xx-large;
 }
 
-#ulTicket li {
-    display: inline;
-    margin-left: 25px;
+.titre {
+    font-size: 4em;
 }
 
-#titreTicket {
-    font-size: larger;
+.titreTicket {
+    font-size: 1.5em;
     font-weight: bold;
+    text-decoration: underline;
 }
 
-ul li {
-    list-style: none;
+.listeTicket p {
+    margin-left: 20px;
+    font-size: 1em;
+    width: 400px;
+}
+
+.bouttonInfo {
+    width: 100px;
+    height: 30px;
+    border-radius: 15%;
+}
+
+.link {
+    font-size: 2em;
+}
+
+.butonCreateTicket {
+    margin-right: 50%;
+    margin-top: 5px;
+    width: 200px;
+    height: 60px;
+    float: right;
+    font-weight: bold;
+    font-size: large;
 }
 
 a {
@@ -173,6 +196,8 @@ td {
     height: 45px;
     font-weight: bold;
     display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #ButtonStatut {
@@ -181,4 +206,54 @@ td {
     font-weight: bold;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 680px) {
+    #decoHeader {
+        margin-top: 70px;
+    }
+
+    .titre {
+        font-size: 4em;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .titreTicket {
+        font-size: 3em;
+    }
+
+    .listeTicket p {
+        margin-left: 20px;
+        font-size: 2em;
+    }
+
+    p.info {
+        margin-left: 5px;
+    }
+
+    .bouttonInfo {
+        width: 100px;
+        height: 30px;
+    }
+
+    .link {
+        font-size: 2em;
+    }
+
+    .divButonCreateTicket {
+        margin-left: 10%;
+    }
+
+    .butonCreateTicket {
+        width: 120px;
+        height: 30px;
+    }
+
+    #containerCreat {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
 }

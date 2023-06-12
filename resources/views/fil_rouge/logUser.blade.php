@@ -1,68 +1,67 @@
 @extends('template.pageCommune')
 @section('content')
     <div>
-
         @if (auth()->user()->isAdmin())
-            <h2>Tous les tickets :</h2>
-            <ul id="ulTicket">
-                @forelse ($tickets as $ticket)
-                    <ul>
-                        <li>
-                            <span id="titreTicket">Ticket {{ $ticket->Id }} : </span>
-                        </li>
-                        <ul>
-                            <li><strong>Matériel : </strong>{{ $ticket->Materiel }} </li>
-                            <li><strong>Le probléme rencontrer est :</strong>{{ $ticket->Sujet }}</li>
-                            <li><strong>Auteur : </strong>{{ $ticket->prenom }} {{ $ticket->name_autor }}</li>
-                            <li><strong>Date de creation : </strong>{{ $ticket->CreatedAt }}</li>
-                            @if ($ticket->UpdatedAt != null)
-                                <li><strong>Derniére mise à jour faite le : </strong>{{ $ticket->UpdatedAt }}</li>
-                            @endif
-                            <li><strong>Statut : </strong>{{ $ticket->label_status }} <button><a
-                                        href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button>
-                            </li>
+            <h2 class="titre">Tous les tickets :</h2>
+
+            @forelse ($tickets as $ticket)
+                <div class="titreTicket">Ticket {{ $ticket->Id }} : </div>
+
+                <div class="listeTicket">
+                    <p><strong>Matériel : </strong>{{ $ticket->Materiel }}</p>
+                    <p><strong>Le probléme rencontré est :</strong>{{ $ticket->Sujet }}</p>
+                    <p><strong>Auteur : </strong>{{ $ticket->prenom }} {{ $ticket->name_autor }}</p>
+                    <p><strong>Date de creation : </strong>{{ $ticket->CreatedAt }}</p>
+                    @if ($ticket->label_status == 'Résolu')
+                        <p><strong>Le ticket a été fermé le :
+                            </strong>{{ $ticket->UpdatedAt }}</p>
+                    @endif
+                    @if ($ticket->UpdatedAt != null && $ticket->label_status == 'En cours')
+                        <p><strong>Derniére mise à jour faite le :
+                            </strong>{{ $ticket->UpdatedAt }}</p>
+                    @endif
+                    <p><strong>Statut : </strong>{{ $ticket->label_status }}</p>
+                    <p class="info"><button class="bouttonInfo"><a class="link"
+                                href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button></p>
+                </div>
 
 
+            @empty
+            @endforelse
+        @elseif ($tickets != null)
+            <div class="divButonCreateTicket"><button class="butonCreateTicket"><a href="{{ route('creationTicket') }}">Créer
+                        un
+                        ticket</a></button></div>
+            <h2 class="titre">Vos tickets :</h2>
+            @forelse ($tickets as $ticket)
+                <div class="titreTicket">Ticket {{ $ticket->Id }} : </div>
 
-                        </ul>
+                <div class="listeTicket">
+                    <p><strong>Matériel : </strong>{{ $ticket->Materiel }}</p>
+                    <p><strong>Le probléme rencontré est : </strong>{{ $ticket->Sujet }}</p>
+                    <p><strong>Date de creation : </strong>{{ $ticket->CreatedAt }}</p>
+                    @if ($ticket->label_Status == 'Résolu')
+                        <p><strong>Le ticket a été fermé le :
+                            </strong>{{ $ticket->UpdatedAt }}</p>
+                    @endif
+                    @if ($ticket->UpdatedAt != null && $ticket->label_status == 'En cours')
+                        <p><strong>Derniére mise à jour faite le :
+                            </strong>{{ $ticket->UpdatedAt }}</p>
+                    @endif
+                    <p><strong>Statut : </strong>{{ $ticket->label_status }}</p>
+                    <p class="info"><button class="bouttonInfo"><a class="link"
+                                href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button></p>
 
-                    </ul>
+                </div>
 
-                @empty
-                @endforelse
-            @elseif ($tickets != null)
-                <h2>Vos tickets :</h2>
-                <ul id="ulTicket">
-                    @forelse ($tickets as $ticket)
-                        <ul>
-                            <li>
-                                <span id="titreTicket">Ticket {{ $ticket->Id }} : </span>
-                            </li>
-                            <ul>
-                                <li><strong>Materiel : </strong>{{ $ticket->Materiel }} </li>
-                                <li><strong>Le probléme rencontrer est :</strong>{{ $ticket->Sujet }}</li>
-                                <li><strong>Date de creations : </strong>{{ $ticket->CreatedAt }}</li>
-                                @if ($ticket->UpdatedAt != null)
-                                    <li><strong>Derniére mise à jour faite le : </strong>{{ $ticket->UpdatedAt }}</li>
-                                @endif
-                                <li><strong>Status : </strong>{{ $ticket->label_status }}</li>
-                                <li><button><a
-                                            href="{{ route('statutTicket', ['ticketId' => $ticket->Id]) }}">Info</a></button>
-                                </li>
-
-                            </ul>
-
-                        </ul>
-                    @empty
-                    @endforelse
-                    <div><button><a href="{{ route('creationTicket') }}">Créer un ticket</a></button></div>
-                @else
-                    <div>Vous n'avez pas de tickets</div>
-                    <div><button><a href="{{ route('creationTicket') }}">créer un ticket</a></button></div>
+            @empty
+            @endforelse
+        @else
+            <div class="divButonCreateTicket"><button class="butonCreateTicket"><a
+                        href="{{ route('creationTicket') }}">Créer un
+                        ticket</a></button></div>
+            <div>Vous n'avez pas de tickets</div>
         @endif
         </ul>
-
-
     </div>
-
 @endsection
