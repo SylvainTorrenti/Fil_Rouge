@@ -40,7 +40,7 @@
                     <p><strong>Matériel : </strong>{{ $ticket->Materiel }}</p>
                     <p><strong>Le probléme rencontré est : </strong>{{ $ticket->Sujet }}</p>
                     <p><strong>Date de creation : </strong>{{ $ticket->CreatedAt }}</p>
-                    @if ($ticket->label_Status == 'Résolu')
+                    @if ($ticket->label_status == 'Résolu')
                         <p><strong>Le ticket a été fermé le :
                             </strong>{{ $ticket->UpdatedAt }}</p>
                     @endif
