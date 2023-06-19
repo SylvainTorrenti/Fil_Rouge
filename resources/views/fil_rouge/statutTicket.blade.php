@@ -111,6 +111,7 @@
                     if (response.ok) {
                         response.json().then(body => {
                             document.getElementById("statut-label").innerText = body.Label;
+                            location.reload();
                         });
 
                     }
