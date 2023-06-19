@@ -21,6 +21,9 @@ class TicketController extends Controller
     {
         $ticketModel = new TicketModel();
         $ticket = $ticketModel->get($ticket_id);
+        if ($ticket == null) {
+            return view('fil_rouge/erreur');
+        }
         // récuration de tous les messages du tickets
         $messagesModel = new MessageModel();
         $messages = $messagesModel->getMessageTicket($ticket_id);
@@ -33,7 +36,7 @@ class TicketController extends Controller
         if ($ticket != null) {
             return view('fil_rouge/statutTicket', ['ticket' => $ticket, 'messages' => $messages, 'statut' => $statut, 'user' => $user]);
         } else {
-            return view('erreur');
+            return view('fil_rouge/erreur');
         }
     }
     public function ChangeStatut(Request $request)
